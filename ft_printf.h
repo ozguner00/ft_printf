@@ -6,7 +6,7 @@
 /*   By: oguner <oguner@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:39:09 by oguner            #+#    #+#             */
-/*   Updated: 2024/11/25 15:39:18 by oguner           ###   ########.fr       */
+/*   Updated: 2024/11/25 17:06:52 by oguner           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	ft_put_hexadecimal(unsigned long int n);
 int	ft_put_hexadecimal_up(unsigned long int n);
 int	ft_put_pointer(unsigned long long ptr);
 int	ft_put_pointer_hexa(unsigned long int n);
+int	check_handle(char const *format);
 
 #endif

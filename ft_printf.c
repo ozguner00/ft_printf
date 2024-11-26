@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: oguner <oguner@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/25 15:38:05 by oguner            #+#    #+#             */
-/*   Updated: 2024/11/25 15:58:01 by oguner           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_printf.h"
 #include <stdarg.h>
 
@@ -34,30 +22,43 @@ int	ft_printf_arg(va_list list, const char format)
 	return (0);
 }
 
-int	ft_printf(const char *s, ...)
+int check_handle(char const *format)
+{
+	int	len;
+
+	len = ft_strlen(format);
+	if (len == 0)
+		return (-1);
+	else if (len == 1 && format[0] == '%')
+		return (-1);
+	else if (len > 2 && format[len - 1] == '%')
+		return (-1);
+	return (1);
+}
+int	ft_printf(const char *format, ...)
 {
 	va_list	list;
 	int		i;
 	int		len;
 	int		check;
 
-	if (!s || (s[0] == '%' && ft_strlen(s) == 1) || s[ft_strlen(s) - 1] == '%')
+	if (check_handle(format) == -1)
 		return (-1);
 	i = 0;
 	len = 0;
-	va_start(list, s);
-	while (s[i])
+	va_start(list, format);
+	while (format[i])
 	{
-		if (s[i] == '%')
+		if (format[i++] == '%')
 		{
-			check = ft_printf_arg(list, s[i + 1]);
+			check = ft_printf_arg(list, format[i++]);
 			if (check)
 				len += check;
 			else
-				len += ft_put_char(s[i]);
-			i += 2;
+				len += ft_put_char(format[i-2]);
 		}
-		len += ft_put_char(s[i++]);
+		else
+			len += ft_put_char(format[i++]);
 	}
 	va_end(list);
 	return (len);

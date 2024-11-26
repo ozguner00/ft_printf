@@ -6,12 +6,11 @@
 /*   By: oguner <oguner@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:39:02 by oguner            #+#    #+#             */
-/*   Updated: 2024/11/25 15:40:58 by oguner           ###   ########.fr       */
+/*   Updated: 2024/11/26 15:35:46 by oguner           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
 
 int	ft_put_nbr(int n)
 {
